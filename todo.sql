@@ -166,7 +166,53 @@ SELECT
     studno,
     name,
     birthday,
-    TO_CHAR(birthday, 'MM') AS m,
-    DECODE()
+    TO_CHAR(birthday, 'MM') AS m
+FROM
+    student;
+SELECT
+    studno,
+    name,
+    birthday,
+    DECODE(TO_CHAR(birthday, 'MM'), 
+                              '01', '1/4분기',
+                              '02', '1/4분기',
+                              '03', '1/4분기',
+                              '04', '2/4분기',
+                              '05', '2/4분기',
+                              '06', '2/4분기',
+                              '07', '3/4분기',
+                              '08', '3/4분기',
+                              '09', '3/4분기',
+                              '10', '4/4분기',
+                              '11', '4/4분기',
+                              '12', '4/4분기') AS 분기
+FROM
+    student;
+    
+SELECT
+    studno,
+    name,
+    birthday,
+    TO_CHAR(birthday, 'Q') || '/4분기' AS 분기
+FROM
+    student;
+    
+SELECT
+    studno,
+    name,
+    birthday,
+    DECODE(TO_CHAR(birthday, 'Q'),
+            '1', '1/4분기',
+            '2', '2/4분기',
+            '3', '3/4분기',
+            '4', '4/4분기') AS 분기
+FROM
+    student;
+    
+SELECT
+    studno,
+    name,
+    birthday,
+    CEIL(TO_CHAR(birthday, 'MM')/3) || '/4분기' AS 분기
 FROM
     student;
