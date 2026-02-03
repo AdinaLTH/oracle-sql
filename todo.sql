@@ -152,7 +152,8 @@ SELECT
     empno,
     ename,
     hiredate,
-    TO_CHAR((sal*12)+comm, '$99,999') AS "총 연봉"
+    TO_CHAR((sal*12)+comm, '$99,999') AS "총 연봉",
+    TO_CHAR(((sal*12)+comm)*1.15, '$99,999') AS "15% UP"
 FROM
     emp
 WHERE
