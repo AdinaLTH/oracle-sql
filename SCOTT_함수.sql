@@ -337,3 +337,17 @@ SELECT
     NVL(TO_CHAR(profno), '담당교수없음')
 FROM
     student;
+    
+SELECT
+    name,
+    birthday,
+    TO_CHAR(birthday, 'Q') || '/4분기' AS 분기
+FROM
+    student;
+    
+SELECT
+    name,
+    birthday,
+    CEIL(TO_CHAR(birthday, 'MM') / 3) || '/4분기' AS 분기 -- CEIL은 가장 가까운 큰 정수
+FROM
+    student;
