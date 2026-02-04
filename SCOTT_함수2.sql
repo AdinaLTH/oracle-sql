@@ -187,6 +187,7 @@ CREATE TABLE board (
 -- 컬럼추가
 ALTER TABLE board ADD (click_count number);
 ALTER TABLE board MODIFY content VARCHAR2(2000);
+ALTER TABLE board MODIFY click_count NUMBER DEFAULT 0;
 
 DESC board;
 
@@ -201,6 +202,18 @@ VALUES (3, 'test', 'user01', '연습글입니다');
 
 INSERT INTO board (board_no, title, writer, content) 
 VALUES (4, 'test', 'user01', '연습글입니다');
+
+INSERT INTO board (board_no, title, content, writer) 
+VALUES ((SELECT MAX(board_no)+1 FROM board)
+        ,:title
+        ,:content
+        ,:writer
+        );
+        
+INSERT INTO board
+VALUES(9, 'title', 'user02', 'content', sysdate, 0);
+
+SELECT MAX(board_no)+1 FROM board;
 
 SELECT
     * 
